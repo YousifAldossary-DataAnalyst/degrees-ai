@@ -1,9 +1,9 @@
 import React from "react";
-import { FieldValues, UseFormUnregister } from "react-hook-form";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import UserTypeCard from "./user-type-card";
 
 type Props = {
-  register: UseFormUnregister<FieldValues>;
+  register: UseFormRegister<FieldValues>
   userType: "owner" | "student";
   setUserType: React.Dispatch<React.SetStateAction<"owner" | "student">>;
 };

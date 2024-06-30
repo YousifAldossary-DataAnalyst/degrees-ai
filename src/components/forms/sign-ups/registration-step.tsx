@@ -4,17 +4,17 @@ import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import TypeSelectionForm from "./type-selections-form";
 import dynamic from "next/dynamic";
-import { Spinner } from "@/components/spinner";
+import LoadingSpinner from "./loading-spinner";
 
-const DetailForm = dynamic(() => import("./account-details-form"), {
+const DetailForm = dynamic(() => import('./account-details-form'), {
   ssr: false,
-  loading: Spinner,
-});
+  loading: LoadingSpinner,
+})
 
-const OTPForm = dynamic(() => import("./otp-form"), {
+const OTPForm = dynamic(() => import('./otp-form'), {
   ssr: false,
-  loading: Spinner,
-});
+  loading: LoadingSpinner,
+})
 
 type Props = {};
 

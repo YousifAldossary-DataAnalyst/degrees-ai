@@ -86,11 +86,11 @@ const PortalSteps = ({
   if (step == 2 && type == 'Payment') {
     return (
       <PaymentCheckout
-        // products={products}
-        // stripeId={stripeId}
-        // onBack={onBack}
-        // onNext={onNext}
-        // amount={amount}
+        products={products}
+        stripeId={stripeId}
+        onBack={onBack}
+        onNext={onNext}
+        amount={amount}
       />
     )
   }
@@ -100,7 +100,7 @@ const PortalSteps = ({
       <h2 className="font-bold text-gray-600 text-4xl">Thank You</h2>
       <p className="text-center">
         Thank you for taking the time to fill in this form. We look forward to
-         speaking to you soon. <br /> You'll receive an email with more details.
+         speaking to you soon. <br /> You may receive an email with more details.
       </p>
     </div>
   )

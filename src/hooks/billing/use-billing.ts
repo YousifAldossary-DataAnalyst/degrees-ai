@@ -76,7 +76,7 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
 
     try {
       setProcessing(true);
-      //WIP: Set a thank you page.
+      //Set a thank you page.
       const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
         confirmParams: {

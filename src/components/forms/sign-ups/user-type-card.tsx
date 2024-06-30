@@ -32,18 +32,18 @@ const UserTypeCard = ({
           userType == value && "border-orange"
         )}
       >
-         <CardContent className="flex justify-between p-2">
+        <CardContent className="flex justify-between p-2">
           <div className="flex items-center gap-3">
             <Card
               className={cn(
-                'flex justify-center p-3',
-                userType == value && 'border-orange'
+                "flex justify-center p-3",
+                userType == value && "border-orange"
               )}
             >
               <User
                 size={30}
                 className={cn(
-                  userType == value ? 'text-orange' : 'text-gray-400'
+                  userType == value ? "text-orange" : "text-gray-400"
                 )}
               />
             </Card>
@@ -59,12 +59,12 @@ const UserTypeCard = ({
           <div>
             <div
               className={cn(
-                'w-4 h-4 rounded-full',
-                userType == value ? 'bg-orange' : 'bg-transparent'
+                "w-4 h-4 rounded-full",
+                userType == value ? "bg-orange" : "bg-transparent"
               )}
             >
               <Input
-                {...register('type', {
+                {...register("type", {
                   onChange: (event) => setUserType(event.target.value),
                 })}
                 value={value}
