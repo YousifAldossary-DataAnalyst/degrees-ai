@@ -12,26 +12,26 @@ import {
 } from "@stripe/react-stripe-js";
 import { useRouter } from "next/navigation";
 
-export const useStripe = () => {
-  const [onStripeAccountPending, setOnStripeAccountPending] =
-    useState<boolean>(false);
+// export const useStripe = () => {
+//   const [onStripeAccountPending, setOnStripeAccountPending] =
+//     useState<boolean>(false);
 
-  const onStripeConnect = async () => {
-    try {
-      setOnStripeAccountPending(true);
-      const account = await axios.get(`/api/stripe/connect`);
-      if (account) {
-        setOnStripeAccountPending(false);
-        if (account) {
-          window.location.href = account.data.url;
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  return { onStripeConnect, onStripeAccountPending };
-};
+//   const onStripeConnect = async () => {
+//     try {
+//       setOnStripeAccountPending(true);
+//       const account = await axios.get(`/api/stripe/connect`);
+//       if (account) {
+//         setOnStripeAccountPending(false);
+//         if (account) {
+//           window.location.href = account.data.url;
+//         }
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   return { onStripeConnect, onStripeAccountPending };
+// };
 
 export const useStripeCustomer = (amount: number, stripeId: string) => {
   const [stripeSecret, setStripeSecret] = useState<string>("");

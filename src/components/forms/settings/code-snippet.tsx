@@ -29,7 +29,7 @@ const CodeSnippet = ({ id }: Props) => {
         }
     ') 
     
-    iframe.src = "${process.env.NEXT_PUBLIC_URL}"
+    iframe.src = "${process.env.NEXT_PUBLIC_URL}/chatbot"
     iframe.classList.add('chat-frame')
     document.body.appendChild(iframe)
     
