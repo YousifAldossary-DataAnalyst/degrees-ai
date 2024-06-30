@@ -4,7 +4,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useClerk } from '@clerk/nextjs'
-import { useChatContext } from './use-chat-context'
+import { useChatContext } from './user-chat-context'
 import { onGetConversationMode, onToggleRealtime } from '@/actions/conversation'
 
 const useSideBar = () => {
