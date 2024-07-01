@@ -8,21 +8,6 @@ type AppointmentTimeSlots = {
 
 export const APPOINTMENT_TIME_SLOTS: AppointmentTimeSlots[] = [
   {
-    slot: "9:00am",
-  },
-  {
-    slot: "9:30am",
-  },
-  {
-    slot: "10:00am",
-  },
-  {
-    slot: "10:30am",
-  },
-  {
-    slot: "11:00am",
-  },
-  {
     slot: "3:00pm",
   },
   {
