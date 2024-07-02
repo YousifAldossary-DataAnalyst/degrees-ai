@@ -352,6 +352,7 @@ export const onAiChatBotAssistant = async (
 
             Your next task is lead the conversation naturally to get the customers email address, name, how they are, their interests, and if they want to purchase services book them an appoitnment or share the domain email address. Be respectful and never break character.
 
+            here are some the services to provide Business development, Web development, and straight A Learners
           `,
           },
           ...chat,
