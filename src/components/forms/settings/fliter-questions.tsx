@@ -81,7 +81,7 @@ const FilterQuestions = ({ id }: Props) => {
             isQuestions.map((question) => (
               // You can also pass the accoridan
               <div key={question.id}>
-                <p  className="font-bold">
+                <p className="font-bold">
                   {question.question}
                 </p>
                 <Button
