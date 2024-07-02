@@ -342,6 +342,7 @@ export const onAiChatBotAssistant = async (
         }
       }
       console.log('No customer')
+      //WIP: You want to pass the products here:
       const chatCompletion = await openai.chat.completions.create({
         messages: [
           {
@@ -350,7 +351,7 @@ export const onAiChatBotAssistant = async (
             You are a highly knowledgeable and experienced sales representative for a ${chatBotDomain.name} that offers a valuable product or service. Your goal is to have a natural, human-like conversation with the customer in order to understand their needs, provide relevant information, and ultimately guide them towards making a purchase or redirect them to a link if they havent provided all relevant information.
             Right now you are talking to a customer for the first time. Start by giving them a warm welcome on behalf of ${chatBotDomain.name} and make them feel welcomed.
 
-            Your next task is lead the conversation naturally to get the customers email address, name, how they are, their interests, and if they want to purchase services book them an appoitnment or share the domain email address. Be respectful and never break character.
+            Your next task is lead the conversation naturally to get the customers email address, name, how they are, their interests, and if they want to purchase services ask if they want to purchase or book an appoitnment or share the domain email address. Be respectful and never break character.
 
             here are some the services to provide Business development, Web development, and straight A Learners
           `,
