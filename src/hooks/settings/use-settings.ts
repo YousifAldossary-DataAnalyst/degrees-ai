@@ -9,6 +9,8 @@ import {
     onUpdateDomain,
     onUpdatePassword,
     onUpdateWelcomeMessage,
+    onDeleteHelpDeskQuestion,
+    onDeleteFilterQuestions,
   } from '@/actions/settings'
   import { useToast } from '@/components/ui/use-toast'
   import {
@@ -160,11 +162,13 @@ import {
       resolver: zodResolver(HelpDeskQuestionsSchema),
     })
     const { toast } = useToast()
-  
+    const router = useRouter()
+    const [deleting, setDeleting] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
     const [isQuestions, setIsQuestions] = useState<
       { id: string; question: string; answer: string }[]
     >([])
+
     const onSubmitQuestion = handleSubmit(async (values) => {
       setLoading(true)
       const question = await onCreateHelpDeskQuestion(
@@ -182,6 +186,19 @@ import {
         reset()
       }
     })
+
+    const onDeleteQuestionsHelpDesk = async (id: string) => {
+      setDeleting(true)
+      const deleted = await onDeleteHelpDeskQuestion(id)
+      if (deleted) {
+        toast({
+          title: 'Success',
+          description: deleted.message,
+        })
+        setDeleting(false)
+        router.refresh()
+      }
+    }
   
     const onGetQuestions = async () => {
       setLoading(true)
@@ -199,9 +216,11 @@ import {
     return {
       register,
       onSubmitQuestion,
+      onDeleteQuestionsHelpDesk,
       errors,
       isQuestions,
       loading,
+      deleting,
     }
   }
   
@@ -215,6 +234,8 @@ import {
       resolver: zodResolver(FilterQuestionsSchema),
     })
     const { toast } = useToast()
+    const router = useRouter()
+    const [deleting, setDeleting] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
     const [isQuestions, setIsQuestions] = useState<
       { id: string; question: string }[]
@@ -233,6 +254,19 @@ import {
         setLoading(false)
       }
     })
+
+    const onDeleteBotQuestions = async (id: string) => {
+      setDeleting(true)
+      const deleted = await onDeleteFilterQuestions(id)
+      if (deleted) {
+        toast({
+          title: 'Success',
+          description: deleted.message,
+        })
+        setDeleting(false)
+        router.refresh()
+      }
+    }
   
     const onGetQuestions = async () => {
       setLoading(true)
@@ -250,9 +284,11 @@ import {
     return {
       loading,
       onAddFilterQuestions,
+      onDeleteBotQuestions,
       register,
       errors,
       isQuestions,
+      deleting,
     }
   }
   

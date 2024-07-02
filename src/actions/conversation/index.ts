@@ -1,6 +1,7 @@
 
 'use server'
 
+import { db } from '@/lib/db'
 import { client } from '@/lib/prisma'
 import { pusherServer } from '@/lib/utils'
 
@@ -133,6 +134,21 @@ export const onViewUnReadMessages = async (id: string) => {
       data: {
         seen: true,
       },
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const onViewAllMessages = async (id: string) => {
+  try {
+    await db.chatMessage.findUnique({
+      where: {
+        id: id,
+      },
+      select: {
+        chatRoomId: true
+      }
     })
   } catch (error) {
     console.log(error)

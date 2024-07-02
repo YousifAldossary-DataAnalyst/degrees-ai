@@ -1,27 +1,33 @@
-
-'use client'
-import Section from '@/components/section-label'
+"use client";
+import Section from "@/components/section-label";
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
-} from '@/components/ui/card'
-import { useFilterQuestions } from '@/hooks/settings/use-settings'
-import React from 'react'
-import FormGenerator from '../form-generator'
-import { Button } from '@/components/ui/button'
-import { Loader } from '@/components/loader'
+} from "@/components/ui/card";
+import { useFilterQuestions, useHelpDesk } from "@/hooks/settings/use-settings";
+import React from "react";
+import FormGenerator from "../form-generator";
+import { Button } from "@/components/ui/button";
+import { Loader } from "@/components/loader";
+import { Trash2 } from "lucide-react";
 
 type Props = {
-  id: string
-}
+  id: string;
+};
 
 const FilterQuestions = ({ id }: Props) => {
-  const { register, errors, onAddFilterQuestions, isQuestions, loading } =
-    useFilterQuestions(id)
+  const {
+    register,
+    errors,
+    onAddFilterQuestions,
+    onDeleteBotQuestions,
+    deleting,
+    isQuestions,
+    loading,
+  } = useFilterQuestions(id);
 
-  //WIP: add delete button
   return (
     <Card className="w-full grid grid-cols-1 lg:grid-cols-2">
       <CardContent className="p-6 border-r-[1px]">
@@ -74,12 +80,19 @@ const FilterQuestions = ({ id }: Props) => {
           {isQuestions.length ? (
             isQuestions.map((question) => (
               // You can also pass the accoridan
-              <p
-                key={question.id}
-                className="font-bold"
-              >
-                {question.question}
-              </p>
+              <div>
+                <p key={question.id} className="font-bold">
+                  {question.question}
+                </p>
+                <Button
+                  onClick={() => onDeleteBotQuestions(question.id)}
+                  className="mt-2 mb-2"
+                >
+                  <Loader loading={deleting}>
+                    <Trash2 size="18" />
+                  </Loader>
+                </Button>
+              </div>
             ))
           ) : (
             <CardDescription>No Questions</CardDescription>
@@ -87,7 +100,7 @@ const FilterQuestions = ({ id }: Props) => {
         </Loader>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default FilterQuestions
+export default FilterQuestions;

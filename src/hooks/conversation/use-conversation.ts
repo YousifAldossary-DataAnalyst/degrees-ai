@@ -5,6 +5,7 @@ import {
     onOwnerSendMessage,
     onRealTimeChat,
     onViewUnReadMessages,
+    onViewAllMessages,
   } from '@/actions/conversation'
   import { useChatContext } from '@/context/user-chat-context'
   import { getMonthName, pusherClient } from '@/lib/utils'

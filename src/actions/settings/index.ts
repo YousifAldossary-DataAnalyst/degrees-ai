@@ -1,4 +1,5 @@
 'use server'
+import { db } from '@/lib/db'
 import { client } from '@/lib/prisma'
 import { clerkClient, currentUser } from '@clerk/nextjs'
 
@@ -347,6 +348,43 @@ export const onDeleteUserDomain = async (id: string) => {
   }
 }
 
+export const onDeleteHelpDeskQuestion = async (id: string) => {
+  const user = await currentUser()
+  if (!user) return
+
+  try {
+    const validUser = await db.helpDesk.findUnique({
+      where: {
+        id: id,
+      },
+      select: {
+        id: true,
+      },
+    })
+
+    if (validUser) {
+      const deletedQuestion = await db.helpDesk.delete({
+        where: {
+          id: validUser.id,
+        },
+        select: {
+          id: true,
+        },
+      })
+
+      if (deletedQuestion) {
+        return {
+          status: 200,
+          // message: `${deletedDomain.id} was deleted successfully`,
+          message: `The question was deleted successfully`,
+        }
+      }
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const onCreateHelpDeskQuestion = async (
   id: string,
   question: string,
@@ -410,6 +448,44 @@ export const onGetAllHelpDeskQuestions = async (id: string) => {
       status: 200,
       message: 'New help desk question added',
       questions: questions,
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+export const onDeleteFilterQuestions = async (id: string) => {
+  const user = await currentUser()
+  if (!user) return
+
+  try {
+    const validUser = await db.filterQuestions.findUnique({
+      where: {
+        id: id,
+      },
+      select: {
+        id: true,
+      },
+    })
+
+    if (validUser) {
+      const deletedQuestion = await db.filterQuestions.delete({
+        where: {
+          id: validUser.id,
+        },
+        select: {
+          id: true,
+        },
+      })
+
+      if (deletedQuestion) {
+        return {
+          status: 200,
+          // message: `${deletedDomain.id} was deleted successfully`,
+          message: `The question was deleted successfully`,
+        }
+      }
     }
   } catch (error) {
     console.log(error)

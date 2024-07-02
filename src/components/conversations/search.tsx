@@ -1,6 +1,16 @@
 import React from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 type Props = {
   register: UseFormRegister<FieldValues>
   domains?:

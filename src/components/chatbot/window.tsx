@@ -73,10 +73,10 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
   ) => {
     console.log(errors)
     return (
-      <div className="h-[670px] w-[450px] flex flex-col bg-white rounded-xl mr-[80px] border-[1px] overflow-hidden">
+      <div className="h-[670px] w-[450px] sm:w-[350px] sm:h-[550px] flex flex-col bg-white rounded-xl mr-[80px] sm:mr-0 border-[1px] overflow-hidden">
         <div className="flex justify-between px-4 pt-4">
           <div className="flex gap-2">
-            <Avatar className="w-20 h-20">
+            <Avatar className="w-20 h-20 sm:w-10 sm:h-10">
               <AvatarImage
                 src="https://github.com/shadcn.png"
                 alt="@shadcn"
@@ -96,7 +96,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
               )}
             </div>
           </div>
-          <div className="relative w-16 h-16">
+          <div className="relative w-16 h-16 sm:hidden">
             <Image
               src="https://ucarecdn.com/019dd17d-b69b-4dea-a16b-60e0f25de1e9/propuser.png"
               fill

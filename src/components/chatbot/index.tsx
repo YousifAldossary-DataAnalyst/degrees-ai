@@ -26,7 +26,7 @@ const AiChatBot = (props: Props) => {
   } = useChatBot()
 
   return (
-    <div className="h-screen flex flex-col justify-end items-end gap-4">
+    <div className="h-screen flex flex-col justify-end items-end gap-4 -z-10">
       {botOpened && (
         <BotWindow
           errors={errors}
@@ -46,7 +46,7 @@ const AiChatBot = (props: Props) => {
       )}
       <div
         className={cn(
-          'rounded-full relative cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-grandis',
+          'rounded-full relative cursor-pointer shadow-md w-16 h-16 sm:w-10 sm:h-10 flex items-center justify-center bg-grandis',
           loading ? 'invisible' : 'visible'
         )}
         onClick={onOpenChatBot}

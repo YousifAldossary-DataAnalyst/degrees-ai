@@ -28,7 +28,7 @@ const ConversationMenu = ({ domains }: Props) => {
     useConversation()
 
   return (
-    <div className="py-3 px-0">
+    <div className="py-3 px-3">
       <TabsMenu triggers={TABS_MENU}>
         <TabsContent value="unread">
           <ConversationSearch
@@ -57,25 +57,43 @@ const ConversationMenu = ({ domains }: Props) => {
           </div>
         </TabsContent>
         <TabsContent value="all">
-          <Separator
-            orientation="horizontal"
-            className="mt-5"
+           <ConversationSearch
+            domains={domains}
+            register={register}
           />
-          all
+          <div className="flex flex-col w-full">
+            <Loader loading={loading}>
+              {chatRooms.length ? (
+                chatRooms.map((room) => (
+                  <ChatCard
+                    id={room.chatRoom[0].id}
+                    //WIP: create onGetActiveChatMessages for other Tabs in Chat
+                    onChat={() => onGetActiveChatMessages(room.chatRoom[0].id)}
+                    createdAt={room.chatRoom[0].message[0]?.createdAt}
+                    key={room.chatRoom[0].id}
+                    title={room.email!}
+                    description={room.chatRoom[0].message[0]?.message}
+                  />
+                ))
+              ) : (
+                <CardDescription>No chats for you domain</CardDescription>
+              )}
+            </Loader>
+            </div>
         </TabsContent>
-        <TabsContent value="expired">
+        {/* <TabsContent value="expired">
           <Separator
             orientation="horizontal"
             className="mt-5"
           />
           expired
-        </TabsContent>
+        </TabsContent> */}
         <TabsContent value="starred">
           <Separator
             orientation="horizontal"
             className="mt-5"
           />
-          starred
+          Soon
         </TabsContent>
       </TabsMenu>
     </div>
