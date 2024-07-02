@@ -80,8 +80,8 @@ const FilterQuestions = ({ id }: Props) => {
           {isQuestions.length ? (
             isQuestions.map((question) => (
               // You can also pass the accoridan
-              <div>
-                <p key={question.id} className="font-bold">
+              <div key={question.id}>
+                <p  className="font-bold">
                   {question.question}
                 </p>
                 <Button

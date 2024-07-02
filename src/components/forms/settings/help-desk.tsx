@@ -77,9 +77,8 @@ const HelpDesk = ({ id }: Props) => {
         <Loader loading={loading}>
           {isQuestions.length ? (
             isQuestions.map((question) => (
-              <div>
+              <div key={question.id}>
                 <Accordion
-                  key={question.id}
                   trigger={question.question}
                   content={question.answer}
                 />
