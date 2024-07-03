@@ -14,7 +14,8 @@ type IntegrationModalBodyProps = {
 // WIP: For each integration you want. Add a case for instagram, meta, others.
 // Just add the API for integration
 // Learn more add buttons to send the user to the target webstie.
-
+// the mapping is ready just move it inside create a ts file with information needed pass it here.
+// the same way you need stripeId to store the information in the db. You too need to store their other social media ids in the db.
 export const IntegrationModalBody = ({
   type,
   connections,

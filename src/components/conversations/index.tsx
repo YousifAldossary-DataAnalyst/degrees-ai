@@ -40,7 +40,7 @@ const ConversationMenu = ({ domains }: Props) => {
               {chatRooms.length ? (
                 chatRooms.map((room) => (
                   <ChatCard
-                    seen={room.chatRoom[0].message[0]?.seen}
+                    seen={!room.chatRoom[0].message[0]?.seen}
                     id={room.chatRoom[0].id}
                     //WIP: create onGetActiveChatMessages for other Tabs in Chat
                     onChat={() => onGetActiveChatMessages(room.chatRoom[0].id)}
@@ -88,13 +88,13 @@ const ConversationMenu = ({ domains }: Props) => {
           />
           expired
         </TabsContent> */}
-        <TabsContent value="starred">
+        {/* <TabsContent value="starred">
           <Separator
             orientation="horizontal"
             className="mt-5"
           />
           Soon
-        </TabsContent>
+        </TabsContent> */}
       </TabsMenu>
     </div>
   )

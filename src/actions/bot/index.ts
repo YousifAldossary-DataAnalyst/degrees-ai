@@ -1,4 +1,3 @@
-
 'use server'
 
 import { client } from '@/lib/prisma'
@@ -145,7 +144,6 @@ export const onAiChatBotAssistant = async (
               },
             },
           })
-          // Message to customer
           if (newCustomer) {
             console.log('new customer made')
             const response = {
@@ -157,7 +155,6 @@ export const onAiChatBotAssistant = async (
             return { response }
           }
         }
-        //Live mode. All server action.
         if (checkCustomer && checkCustomer.customer[0].chatRoom[0].live) {
           await onStoreConversations(
             checkCustomer?.customer[0].chatRoom[0].id!,
@@ -225,19 +222,17 @@ export const onAiChatBotAssistant = async (
 
               Always maintain character and stay respectfull.
 
-              You also need to be multilingual, accepting all languages in a formal manner. 
-
               The array of questions : [${chatBotDomain.filterQuestions
                 .map((questions) => questions.question)
                 .join(', ')}]
 
               if the customer says something out of context or inapporpriate. Simply say this is beyond you and you will get a real user to continue the conversation. And add a keyword (realtime) at the end.
 
-              if the customer agrees to book an appointment send them this link ${process.env.NEXT_PUBLIC_URL}/portal/${id}/appointment/${
+              if the customer agrees to book an appointment send them this link http://localhost:3000/portal/${id}/appointment/${
                 checkCustomer?.customer[0].id
               }
 
-              if the customer wants to buy a product redirect them to the payment page ${process.env.NEXT_PUBLIC_URL}/portal/${id}/payment/${
+              if the customer wants to buy a product redirect them to the payment page http://localhost:3000/portal/${id}/payment/${
                 checkCustomer?.customer[0].id
               }
           `,
@@ -342,7 +337,6 @@ export const onAiChatBotAssistant = async (
         }
       }
       console.log('No customer')
-      //WIP: You want to pass the products here:
       const chatCompletion = await openai.chat.completions.create({
         messages: [
           {
@@ -351,9 +345,8 @@ export const onAiChatBotAssistant = async (
             You are a highly knowledgeable and experienced sales representative for a ${chatBotDomain.name} that offers a valuable product or service. Your goal is to have a natural, human-like conversation with the customer in order to understand their needs, provide relevant information, and ultimately guide them towards making a purchase or redirect them to a link if they havent provided all relevant information.
             Right now you are talking to a customer for the first time. Start by giving them a warm welcome on behalf of ${chatBotDomain.name} and make them feel welcomed.
 
-            Your next task is lead the conversation naturally to get the customers email address, name, how they are, their interests, and if they want to purchase services ask if they want to purchase or book an appoitnment or share the domain email address. Be respectful and never break character.
+            Your next task is lead the conversation naturally to get the customers email address. Be respectful and never break character
 
-            here are some the services to provide Business development, Web development, and straight A Learners
           `,
           },
           ...chat,
