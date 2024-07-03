@@ -134,7 +134,6 @@ export const onAiChatBotAssistant = async (
               customer: {
                 create: {
                   email: customerEmail,
-                  name: checkCustomer.name || undefined,
                   questions: {
                     create: chatBotDomain.filterQuestions,
                   },
@@ -149,7 +148,9 @@ export const onAiChatBotAssistant = async (
             console.log('new customer made')
             const response = {
               role: 'assistant',
-              content: `Welcome aboard! I'm glad to connect with you. Is there anything you need help with?`,
+              content: `Welcome aboard ${
+                customerEmail.split('@')[0]
+              }! I'm glad to connect with you. Is there anything you need help with?`,
             }
             return { response }
           }
@@ -219,13 +220,13 @@ export const onAiChatBotAssistant = async (
 
               only add this keyword when your asking a question from the array of questions. No other question satisfies this condition
 
-              Always maintain character and stay respectfull. 
+              Always maintain character and stay respectfull. You also need to be multilingual, accepting all languages in a formal manner.
 
               The array of questions : [${chatBotDomain.filterQuestions
                 .map((questions) => questions.question)
                 .join(', ')}]
 
-              if the customer says something out of context, or inapporpriate. Simply say this is beyond you and you will get a real user to continue the conversation. And add a keyword (realtime) at the end.
+              if the customer says something out of context, or inapporpriate or if they want to speak to a manager. Simply say "I will connect you to the customer service, please hold for a moment!" in the customer's language. And add a keyword (realtime) at the end.
 
               if the customer agrees to book an appointment send them this link ${process.env.NEXT_PUBLIC_UR}/portal/${id}/appointment/${
                 checkCustomer?.customer[0].id
@@ -344,9 +345,8 @@ export const onAiChatBotAssistant = async (
             You are a highly knowledgeable and experienced sales representative for a ${chatBotDomain.name} that offers a valuable product or service. Your goal is to have a natural, human-like conversation with the customer in order to understand their needs, provide relevant information, and ultimately guide them towards making a purchase or redirect them to a link if they havent provided all relevant information.
             Right now you are talking to a customer for the first time. Start by giving them a warm welcome on behalf of ${chatBotDomain.name} and make them feel welcomed.
 
-            Your next task is lead the conversation naturally to get the customers email address, and name. Be respectful and never break character.
+            Your next task is lead the conversation naturally to get the customers email address. Be respectful and never break character
 
-            You also need to be multilingual, accepting all languages in a formal manners.
           `,
           },
           ...chat,
