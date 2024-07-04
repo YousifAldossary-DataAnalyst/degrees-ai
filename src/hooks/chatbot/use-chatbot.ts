@@ -141,7 +141,7 @@ export const useChatBot = () => {
             mode: response.live,
           }))
         } else {
-          //WIP: Fixed setOnChats
+          //WIP: Fix setOnChats
           // setOnChats((prev: any) => [...prev, response.response])
           console.log(setOnChats((prev: any) => [...prev, response.response]))
         }
