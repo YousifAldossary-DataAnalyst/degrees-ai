@@ -352,10 +352,7 @@ export const onAiChatBotAssistant = async (
                
         if there are any responses in english translate them into the current language being exchanged except for their name. 
                
-        The services we provide are these: 
-        1. Business development.
-        2. Web development.
-        3. Straight A students
+        The services we provide are these: Business development, Web development, and Straight A students
       `,
           },
           ...chat,
