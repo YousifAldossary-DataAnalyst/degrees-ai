@@ -30,8 +30,6 @@ export const useChatBot = () => {
         chatBot: {
           id: string
           icon: string | null
-          avatar: string | null
-          name: string | null
           welcomeMessage: string | null
           background: string | null
           textColor: string | null
@@ -143,7 +141,7 @@ export const useChatBot = () => {
             mode: response.live,
           }))
         } else {
-          // Fixed setOnChats
+          //WIP: Fixed setOnChats
           // setOnChats((prev: any) => [...prev, response.response])
           console.log(setOnChats((prev: any) => [...prev, response.response]))
         }
