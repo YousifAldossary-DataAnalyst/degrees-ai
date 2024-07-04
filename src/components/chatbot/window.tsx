@@ -73,7 +73,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
   ) => {
     console.log(errors)
     return (
-      <div className="w-[350px] h-[550px] flex flex-col bg-white rounded-xl border-[1px] overflow-hidden">
+      <div className="w-[350px] h-[650px] flex flex-col bg-white rounded-xl border-[1px] overflow-hidden">
         <div className="flex justify-between px-4 pt-4">
           <div className="flex gap-2">
             <Avatar className="w-14 h-14">
