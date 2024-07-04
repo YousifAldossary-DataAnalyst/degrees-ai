@@ -78,7 +78,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
       <div className="w-[350px] h-[550px] flex flex-col bg-white rounded-xl border-[1px] overflow-hidden">
         <div className="flex justify-between px-4 pt-4">
           <div className="flex gap-2">
-            {avatar ? (
+            {/* {avatar ? (
               <div className="rounded-full overflow-hidden">
                 <Image
                   src={`https://ucarecdn.com/${avatar}/`}
@@ -87,7 +87,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
                   height={80}
                 />
               </div>
-            ) : (
+            ) : ( */}
               <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center">
                 <Avatar className="w-20 h-20">
                   <AvatarImage
@@ -97,7 +97,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </div>
-            )}
+            {/* )} */}
             <div className="flex items-start flex-col">
               <h3 className="text-lg font-bold leading-none">
                 Sales Rep - Assistant
