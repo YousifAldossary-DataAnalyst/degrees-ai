@@ -21,6 +21,7 @@ type Props = {
 
 //WIP: No component should be pound to logic. Create Global Reusable components.
 // Refer to Degrees project. 
+// Basically like timeslots and sidebar you want to pass the information through a map.
 const Modal = ({
   trigger,
   children,

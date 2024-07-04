@@ -51,6 +51,8 @@ model ChatBot {
   id             String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   welcomeMessage String?
   icon           String?
+  avatar         String?
+  name           String?
   background     String?
   textColor      String?
   helpdesk       Boolean @default(false)

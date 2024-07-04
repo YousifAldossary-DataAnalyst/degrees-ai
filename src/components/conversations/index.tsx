@@ -1,67 +1,66 @@
-
-'use client'
-import { useConversation } from '@/hooks/conversation/use-conversation'
-import React from 'react'
-import TabsMenu from '../tabs'
-import { TABS_MENU } from '@/constants/menu'
-import { TabsContent } from '../ui/tabs'
-import ConversationSearch from './search'
-import { Loader } from '../loader'
-import ChatCard from './chat-card'
-import { CardDescription } from '../ui/card'
-import { Separator } from '../ui/separator'
+"use client";
+import { useConversation } from "@/hooks/conversation/use-conversation";
+import React from "react";
+import TabsMenu from "../tabs";
+import { TABS_MENU } from "@/constants/menu";
+import { TabsContent } from "../ui/tabs";
+import ConversationSearch from "./search";
+import { Loader } from "../loader";
+import ChatCard from "./chat-card";
+import { CardDescription } from "../ui/card";
+import { Separator } from "../ui/separator";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 type Props = {
   domains?:
     | {
-        name: string
-        id: string
-        icon: string
+        name: string;
+        id: string;
+        icon: string;
       }[]
-    | undefined
-}
+    | undefined;
+};
 
 const ConversationMenu = ({ domains }: Props) => {
-  //WIP: Pass all, expired and starred. Front-end is the same logic. 
+  //WIP: Pass all, expired and starred. Front-end is the same logic.
   // Only changes in hooks -> Refer to youtube How to build real-time chat.
   const { register, chatRooms, loading, onGetActiveChatMessages } =
-    useConversation()
+    useConversation();
 
   return (
     <div className="py-3 px-3">
       <TabsMenu triggers={TABS_MENU}>
         <TabsContent value="unread">
-          <ConversationSearch
-            domains={domains}
-            register={register}
-          />
-          <div className="flex flex-col">
-            <Loader loading={loading}>
-              {chatRooms.length ? (
-                chatRooms.map((room) => (
-                  <ChatCard
-                    seen={!room.chatRoom[0].message[0]?.seen}
-                    id={room.chatRoom[0].id}
-                    //WIP: create onGetActiveChatMessages for other Tabs in Chat
-                    onChat={() => onGetActiveChatMessages(room.chatRoom[0].id)}
-                    createdAt={room.chatRoom[0].message[0]?.createdAt}
-                    key={room.chatRoom[0].id}
-                    title={room.email!}
-                    description={room.chatRoom[0].message[0]?.message}
-                  />
-                ))
-              ) : (
-                <CardDescription>No chats for you domain</CardDescription>
-              )}
-            </Loader>
+          <ConversationSearch domains={domains} register={register} />
+          <div className="flex flex-col ">
+            <ScrollArea className="h-[750px] w-full rounded-md border overflow-y-auto">
+              <Loader loading={loading}>
+                {chatRooms.length ? (
+                  chatRooms.map((room) => (
+                    <ChatCard
+                      seen={!room.chatRoom[0].message[0]?.seen}
+                      id={room.chatRoom[0].id}
+                      //WIP: create onGetActiveChatMessages for other Tabs in Chat
+                      onChat={() =>
+                        onGetActiveChatMessages(room.chatRoom[0].id)
+                      }
+                      createdAt={room.chatRoom[0].message[0]?.createdAt}
+                      key={room.chatRoom[0].id}
+                      title={room.email!}
+                      description={room.chatRoom[0].message[0]?.message}
+                    />
+                  ))
+                ) : (
+                  <CardDescription>No chats for you domain</CardDescription>
+                )}
+              </Loader>
+            </ScrollArea>
           </div>
         </TabsContent>
         <TabsContent value="all">
-           <ConversationSearch
-            domains={domains}
-            register={register}
-          />
+          <ConversationSearch domains={domains} register={register} />
           <div className="flex flex-col w-full">
+          <ScrollArea className="h-[750px] w-full rounded-md border overflow-y-auto">
             <Loader loading={loading}>
               {chatRooms.length ? (
                 chatRooms.map((room) => (
@@ -79,7 +78,8 @@ const ConversationMenu = ({ domains }: Props) => {
                 <CardDescription>No chats for you domain</CardDescription>
               )}
             </Loader>
-            </div>
+            </ScrollArea>
+          </div>
         </TabsContent>
         {/* <TabsContent value="expired">
           <Separator
@@ -97,7 +97,7 @@ const ConversationMenu = ({ domains }: Props) => {
         </TabsContent> */}
       </TabsMenu>
     </div>
-  )
-}
+  );
+};
 
-export default ConversationMenu
+export default ConversationMenu;

@@ -11,6 +11,7 @@ import {
     onUpdateWelcomeMessage,
     onDeleteHelpDeskQuestion,
     onDeleteFilterQuestions,
+    onChatBotAvatarUpdate,
   } from '@/actions/settings'
   import { useToast } from '@/components/ui/use-toast'
   import {
@@ -116,6 +117,18 @@ import {
           setLoading(false)
         }
       }
+      //WIP: update avatar.
+      // if (values.avatar[0]) {
+      //   const uploaded = await upload.uploadFile(values.avatar[0])
+      //   const avatar = await onChatBotAvatarUpdate(id, uploaded.uuid)
+      //   if (avatar) {
+      //     toast({
+      //       title: avatar.status == 200 ? 'Success' : 'Error',
+      //       description: avatar.message,
+      //     })
+      //     setLoading(false)
+      //   }
+      // }
       if (values.welcomeMessage) {
         const message = await onUpdateWelcomeMessage(values.welcomeMessage, id)
         if (message) {

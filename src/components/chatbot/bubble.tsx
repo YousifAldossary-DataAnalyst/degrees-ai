@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { currentUser } from '@clerk/nextjs'
 
 type Props = {
   message: {
@@ -15,10 +16,12 @@ type Props = {
   createdAt?: Date
 }
 
-const Bubble = ({ message, createdAt }: Props) => {
+const Bubble = async ({ message, createdAt }: Props) => {
   let d = new Date()
   const image = extractUUIDFromString(message.content)
   console.log(message.link)
+
+  const user = await currentUser()
 
   return (
     <div
@@ -30,7 +33,7 @@ const Bubble = ({ message, createdAt }: Props) => {
       {message.role == 'assistant' ? (
         <Avatar className="w-5 h-5">
           <AvatarImage
-            src="https://github.com/shadcn.png"
+            src={`${user?.imageUrl}`}
             alt="@shadcn"
           />
           <AvatarFallback>CN</AvatarFallback>

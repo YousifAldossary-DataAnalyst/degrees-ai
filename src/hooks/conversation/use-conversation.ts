@@ -151,7 +151,6 @@ import {
       }
     }, [chatRoom])
     
-    //WIP: Check if this is firing twice
     const onHandleSentMessage = handleSubmit(async (values) => {
       try {
         reset()

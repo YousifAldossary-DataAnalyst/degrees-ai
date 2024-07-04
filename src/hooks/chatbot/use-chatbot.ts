@@ -30,6 +30,8 @@ export const useChatBot = () => {
         chatBot: {
           id: string
           icon: string | null
+          avatar: string | null
+          name: string | null
           welcomeMessage: string | null
           background: string | null
           textColor: string | null

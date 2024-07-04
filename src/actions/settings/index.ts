@@ -186,6 +186,8 @@ export const onGetCurrentDomainInfo = async (domain: string) => {
                 id: true,
                 welcomeMessage: true,
                 icon: true,
+                avatar: true,
+                name: true,
               },
             },
           },
@@ -258,6 +260,44 @@ export const onChatBotImageUpdate = async (id: string, icon: string) => {
           update: {
             data: {
               icon,
+            },
+          },
+        },
+      },
+    })
+
+    if (domain) {
+      return {
+        status: 200,
+        message: 'Domain updated',
+      }
+    }
+
+    return {
+      status: 400,
+      message: 'Oops something went wrong!',
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+//WIP: avatar update
+export const onChatBotAvatarUpdate = async (id: string, avatar: string) => {
+  const user = await currentUser()
+
+  if (!user) return
+
+  try {
+    const domain = await client.domain.update({
+      where: {
+        id,
+      },
+      data: {
+        chatBot: {
+          update: {
+            data: {
+              avatar,
             },
           },
         },
