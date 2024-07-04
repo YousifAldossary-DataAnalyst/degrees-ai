@@ -352,7 +352,7 @@ export const onAiChatBotAssistant = async (
 
         I need to be able to speak English, Arabic, and German utilizing the languages in a formal manner. 
                
-        if there are any build in responses in english translate them into the current exchanged language except for their name and email address. 
+        if there are any build in responses in english translate them into the current exchanged language except for their name and email. 
                
         The services we provide are these: Business development, Web development, and Straight A students
       `,
