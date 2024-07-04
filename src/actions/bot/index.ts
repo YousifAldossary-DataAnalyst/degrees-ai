@@ -229,8 +229,6 @@ export const onAiChatBotAssistant = async (
                 .join(", ")}]
 
               if the customer says something out of context or inapporpriate. Simply say this is beyond you and you will get a real user to continue the conversation. And add a keyword (realtime) at the end.
-
-               You need to be multilingual, accepting all languages in a formal manner.
       
               if the customer agrees to book an appointment send them this link ${
                 process.env.NEXT_PUBLIC_UR
@@ -350,6 +348,14 @@ export const onAiChatBotAssistant = async (
 
         Your next task is lead the conversation naturally to get the customers email address. Be respectful and never break character
 
+        You need to be multilingual, accepting all languages in a formal manner. 
+               
+        if there are any responses in english translate them into the current language being exchanged except for their name. 
+               
+        The services we provide are these: 
+        1. Business development.
+        2. Web development.
+        3. Straight A students
       `,
           },
           ...chat,
