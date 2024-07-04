@@ -25,8 +25,9 @@ const AiChatBot = (props: Props) => {
     errors,
   } = useChatBot()
 
+  //WIP: add avatar in window
   return (
-    <div className="h-screen flex flex-col justify-end items-end gap-4 -z-10">
+    <div className="h-screen flex flex-col justify-end items-end gap-4 -z-20">
       {botOpened && (
         <BotWindow
           errors={errors}
@@ -34,7 +35,6 @@ const AiChatBot = (props: Props) => {
           realtimeMode={onRealTime}
           helpdesk={currentBot?.helpdesk!}
           domainName={currentBot?.name!}
-          // avatar={currentBot?.chatBot?.avatar}
           ref={messageWindowRef}
           help={currentBot?.chatBot?.helpdesk}
           theme={currentBot?.chatBot?.background}
